@@ -1,0 +1,3 @@
+Ravi: Started exploratory testing on end-to-end flow. Found two minor inconsistencies and raised them.
+Meena: Finished documentation for SCRUM-5. Uploaded results and walkthrough steps.
+Arun: Verified all frontend validations. Closed SCRUM-3 pending items. Synced UI with backend.

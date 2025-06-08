@@ -1,0 +1,3 @@
+Ravi: Completed bug fix in backend logic for SCRUM-2. Verified GitHub Copilot integration. Resolved API response validation issue.
+Meena: Finalized test scenarios for SCRUM-5. Updated test suite and linked validation results.
+Arun: Reviewed frontend code for SCRUM-3. Suggested optimization in dashboard rendering. Started implementing changes.

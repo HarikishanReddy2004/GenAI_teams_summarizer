@@ -1,0 +1,3 @@
+Ravi: Handled database migration scripts for SCRUM-10. Fixed indexing performance issues.
+Meena: Worked on automation suite integration with CI pipeline for SCRUM-5. Initial test pass successful.
+Arun: Helped troubleshoot SCRUM-6 form validation issues. Refactored JS handling logic.
