@@ -1,14 +1,14 @@
 Thopireddy Harikishan Reddy: Hi team, regarding SCRUM-2, I completed the coding work, raised a PR, awaiting approval.
-Suman: ok Thopireddy Harikishan Reddy ..t.sindhuja550 anything from ur side?
+PersonA: ok Thopireddy Harikishan Reddy ..t.sindhuja550 anything from ur side?
 
 t.sindhuja550: Regarding SCRUM-3, I integrated GitHub Copilot for autocompletion testing.
-Suman: Thanks sindhu ok..mmm Hari
+PersonA: Thanks sindhu ok..mmm Hari
 
 Thopireddy Harikishan Reddy: Also did a quick review of the API response validations. Found a minor issue that I fixed.
-Ankur: That's sounds good. what about sindhuja
-Suman: sindhu anything to say
+PersonB: That's sounds good. what about sindhuja
+PersonA: sindhu anything to say
 
 t.sindhuja550: Checked the initial Copilot suggestions with different codebases. Results look promising
 Thopireddy Harikishan Reddy: as far as SCRUM-4 is concerned Also did a quick review of the API response validations. Found a minor issue that I fixed.
-Suman: thanks hari
+PersonA: thanks hari
 Thopireddy Harikishan Reddy: created a PR documetation too
