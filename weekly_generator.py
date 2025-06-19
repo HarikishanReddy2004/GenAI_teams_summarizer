@@ -9,22 +9,16 @@ GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini
 
 def collect_weekly_text(folder_path):
     weekly_text = ""
-    today = datetime.today()
+    # today = datetime.today()
 
     # Scan all .txt files in the folder from the past 7 days
     for file_name in os.listdir(folder_path):
         if not file_name.endswith(".txt"):
             continue
 
-        # Expecting file format like '2025-06-01_summary.txt'
-        try:
-            date_part = file_name.split("_")[0]
-            file_date = datetime.strptime(date_part, "%Y-%m-%d")
-            if today - file_date <= timedelta(days=7):
-                with open(os.path.join(folder_path, file_name), "r") as file:
-                    weekly_text += file.read().strip() + "\n"
-        except Exception:
-            continue
+        with open(os.path.join(folder_path, file_name), "r") as file:
+            weekly_text += file.read().strip() + "\n"
+ 
 
     return weekly_text.strip()
 
@@ -34,10 +28,11 @@ def summarize_weekly_text(text):
 
     headers = {"Content-Type": "application/json"}
     instruction = (
-        "Summarize the following weekly team updates max into 7 crisp bullet points. "
-        "Do not include personal names, PRs, or story IDs. Focus only on key accomplishments, "
-        "completed tasks, integrations, or validations."
-        "frame summary points which should be very generic it should be like--> I finished this or that.It should basically give the heaidngs which we focused whole week "
+        "Summarize the following weekly team updates max into 3 crisp bullet points. And also mention what Isses faced under issue heading"
+        "Do not include personal names, PRs, or story IDs. Focus only on key accomplishments,completed tasks, integrations, or validations. "
+        "frame summary points which should be very generic it should be like--> I finished this or that.It should basically give the headings which we focused whole week ."
+        "Ensure this update report will be monitored by the leadership team .so make sure it shouldn't contain non-work related and also basic works.It shoudl cover all week files into few points "
+        "No * marks present, and also there shouldn't be the natural language statements such as here is the updated summary/ whaterver u try to explain."
     )
 
     payload = {
@@ -74,7 +69,8 @@ def generate_weekly_report(folder_path):
     print("Generating weekly summary...\n")
     summary = summarize_weekly_text(raw_text)
     print(summary)
-
-if __name__ == "__main__":
-    # Example folder path: "./summaries
-    generate_weekly_report("D:\\teams_genai\\venv\\weekly_summary_inputs")
+    report_dir = "D:\\teams_genai\\venv\\weekly_report"
+    weekly_file = os.path.join(report_dir, 'current_week_report.txt')
+    with open(weekly_file, 'w', encoding='utf-8') as f:
+        f.write(summary)
+    print(f"All summaries written to {weekly_file}")
