@@ -3,14 +3,14 @@ from collections import defaultdict
 
 def clean_comment(comment, story_id):
     # Remove phrases like 'regarding SCRUM-3', 'as far as SCRUM-4 is concerned'
-    pattern = re.compile(r"(regarding|as far as|about|concerning)?\s*{}\b[:,]?\s*".format(re.escape(story_id)), re.IGNORECASE)
+    pattern = re.compile(r"(regarding|as far as|about|concerning|coming to)?\s*{}\b[:,]?\s*".format(re.escape(story_id)), re.IGNORECASE)
     return pattern.sub("", comment).strip()
 
 def extract_updates(conversation_text):
     updates = {}
     last_story_by_person = {}
     story_keywords = defaultdict(set)
-    ignore_people = {'Suman', 'Ankur'}
+    ignore_people = {'PersonA', 'PersonB'} # extra ppl apart from jira stories/ excluded from agile
 
     keyword_memory = defaultdict(lambda: defaultdict(set))  # person -> story -> set of keywords
 
@@ -36,7 +36,7 @@ def extract_updates(conversation_text):
             updates[person] = {}
 
         comment_text = line[len(person)+1:].strip()
-        story_match = re.search(r"\b(SCRUM-\d+)\b", line, re.IGNORECASE)
+        story_match = re.search(r"\b(SCRUM-\d+)\b", line, re.IGNORECASE) #searching a story based on its num /label
         matched_story = None
 
         if story_match:
@@ -74,16 +74,3 @@ def extract_updates(conversation_text):
         final_output[person] = {story: comments for story, comments in stories.items()}
 
     return final_output
-
-
-
-
-# def summarize_updates(updates_dict):
-#     summarized = {}
-#     for person, stories in updates_dict.items():
-#         summarized[person] = {}
-#         for story_id, messages in stories.items():
-#             combined_text = " ".join(messages)
-#             summary = generate_summary(combined_text)
-#             summarized[person][story_id] = summary
-#     return summarized
