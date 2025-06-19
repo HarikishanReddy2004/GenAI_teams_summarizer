@@ -60,4 +60,3 @@ def post_comment(issue_key, comment_body):
         print(f"Error posting comment to {issue_key}: {response.status_code} - {response.text}")
 
     return response.status_code
-
